@@ -9,6 +9,7 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./cart-page.component.css']
 })
 export class CartPageComponent implements OnInit {
+
   cart!: Cart;
 
   constructor(private catServ: CartService) {
@@ -24,4 +25,8 @@ export class CartPageComponent implements OnInit {
     this.catServ.removeFromCart(cartItem.food.id);
   }
 
+  changeQuantity(cartItem: CartItem, quantityInString: string) {
+    const quantity = parseInt(quantityInString);
+    this.catServ.changeQuantity(cartItem.food.id, quantity);
+  }
 }
